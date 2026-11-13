@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DDU Student Dormitory Management System | Real Project by Amanuel Kassie</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Shared Showcase CSS -->
+  <link rel="stylesheet" href="../css/project-showcase.css" />
+
+  <style>
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 2rem;
+    }
+
+    .form-box {
+      background: rgba(0, 0, 0, 0.25);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-sm);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      box-sizing: border-box;
+    }
+
+    .table-container {
+      overflow-x: auto;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    th, td {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    th {
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .status-assigned {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    .stat-card h3 {
+      font-size: 1.8rem;
+      color: var(--accent-primary);
+      margin: 0;
+    }
+
+    .stat-card p {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      margin: 0.3rem 0 0;
+    }
+
+    @media (max-width: 900px) {
+      .simulator-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Integrated Suite Bar -->
+  <header class="suite-navbar">
+    <a href="../index.html" class="suite-brand">
+      <i class="fas fa-terminal"></i>
+      <span>Amanuel</span>.Projects
+    </a>
+
+    <nav class="suite-project-links">
+      <a href="dormitory-management.html" class="project-pill active">
+        <i class="fas fa-building"></i> 1. Dormitory System
+      </a>
+      <a href="online-exam.html" class="project-pill">
+        <i class="fas fa-file-alt"></i> 2. Online Exam
+      </a>
+      <a href="electronics-store.html" class="project-pill">
+        <i class="fas fa-laptop"></i> 3. Electronics Store
+      </a>
+      <a href="cafe-checkin.html" class="project-pill">
+        <i class="fas fa-utensils"></i> 4. Café Check-In
+      </a>
+    </nav>
+
+    <a href="../index.html" class="btn-back-portfolio">
+      <i class="fas fa-arrow-left"></i> Portfolio
+    </a>
+  </header>
+
+  <main class="showcase-container">
+    <!-- Project Banner -->
+    <section class="project-banner">
+      <div class="project-meta-bar">
+        <span class="badge-tag">Dire Dawa University</span>
+        <span class="badge-tag badge-status"><i class="fas fa-check-circle"></i> Real Working Project</span>
+        <span class="badge-tag">PHP • MySQL • Apache</span>
+      </div>
+
+      <h1>DDU Student Dormitory Management System</h1>
+      <p>
+        A complete campus accommodation enterprise application engineered for Dire Dawa University. Automates student room registration, bed allocation, dormitory block administration, proctor task assignments, and student incident reporting.
+      </p>
+
+      <div class="project-action-row">
+        <a href="https://github.com/amangmekael5/DormitoryManagementSystem_PHP" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+          <i class="fab fa-github"></i> View GitHub Repository
+        </a>
+        <a href="#live-system" class="btn-outline-action">
+          <i class="fas fa-sliders-h"></i> Jump to Live System Simulator
+        </a>
+      </div>
+    </section>
+
+    <!-- Key Metrics -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <h3 id="statTotalStudents">2,480</h3>
+        <p>Enrolled Students</p>
+      </div>
+      <div class="stat-card">
+        <h3 id="statAllocatedBeds">2,140</h3>
+        <p>Allocated Beds</p>
+      </div>
+      <div class="stat-card">
+        <h3>48</h3>
+        <p>Campus Dorm Blocks</p>
+      </div>
+      <div class="stat-card">
+        <h3 style="color: #10b981;">65%</h3>
+        <p>Queue Time Reduction</p>
+      </div>
+    </div>
+
+    <!-- Live Interactive Workbench -->
+    <section id="live-system" class="workbench-card">
+      <div class="workbench-topbar">
+        <div class="workbench-title">
+          <i class="fas fa-desktop"></i>
+          <span>Interactive System: Room & Bed Allocation Console</span>
+        </div>
+        <div style="font-size: 0.8rem; color: #10b981; font-weight: 600;">
+          <i class="fas fa-circle" style="font-size: 0.6rem;"></i> Database Connected (MySQL Model)
+        </div>
+      </div>
+
+      <div class="workbench-body">
+        <div class="simulator-grid">
+          <!-- Allocation Form -->
+          <div class="form-box">
+            <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-user-plus" style="color: var(--accent-primary);"></i>
+              Assign Student to Room
+            </h3>
+
+            <form id="assignForm">
+              <div class="form-group">
+                <label>Student ID</label>
+                <input type="text" id="studentId" class="form-control" value="DDU/0429/14" required />
+              </div>
+
+              <div class="form-group">
+                <label>Student Full Name</label>
+                <input type="text" id="studentName" class="form-control" value="Abebe Tadesse" required />
+              </div>
+
+              <div class="form-group">
+                <label>Gender & Department</label>
+                <select id="studentDept" class="form-control">
+                  <option value="Male - Information Technology">Male - Information Technology</option>
+                  <option value="Male - Computer Science">Male - Computer Science</option>
+                  <option value="Female - Software Engineering">Female - Software Engineering</option>
+                  <option value="Male - Electrical Engineering">Male - Electrical Engineering</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label>Target Dormitory Block</label>
+                <select id="dormBlock" class="form-control">
+                  <option value="Block 42 (IoT Senior)">Block 42 (IoT Senior)</option>
+                  <option value="Block 18 (Engineering)">Block 18 (Engineering)</option>
+                  <option value="Block 06 (Computing)">Block 06 (Computing)</option>
+                </select>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem;">
+                <div class="form-group">
+                  <label>Room Number</label>
+                  <select id="roomNo" class="form-control">
+                    <option value="Room 204">Room 204</option>
+                    <option value="Room 108">Room 108</option>
+                    <option value="Room 312">Room 312</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label>Bed Slot</label>
+                  <select id="bedSlot" class="form-control">
+                    <option value="Bed 01 (Lower)">Bed 01 (Lower)</option>
+                    <option value="Bed 02 (Upper)">Bed 02 (Upper)</option>
+                    <option value="Bed 03 (Lower)">Bed 03 (Lower)</option>
+                    <option value="Bed 04 (Upper)">Bed 04 (Upper)</option>
+                  </select>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-primary-action" style="width: 100%; justify-content: center; margin-top: 0.5rem;">
+                <i class="fas fa-check"></i> Execute Room Allocation
+              </button>
+            </form>
+          </div>
+
+          <!-- Live Table Output -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+              <h3 style="font-size: 1.1rem; margin: 0;">Active Room Allocation Ledger</h3>
+              <span id="recordCount" style="font-size: 0.8rem; color: var(--text-secondary);">4 Records</span>
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Student</th>
+                    <th>Block / Room</th>
+                    <th>Bed</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="allocationTable">
+                  <tr>
+                    <td><strong>DDU/0119/14</strong><br><span style="color: var(--text-muted); font-size: 0.75rem;">Yohannes Bekele</span></td>
+                    <td>Block 42 • Room 204</td>
+                    <td>Bed 01</td>
+                    <td><span class="status-badge status-assigned">Occupied</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DDU/0254/14</strong><br><span style="color: var(--text-muted); font-size: 0.75rem;">Kalkidan Girma</span></td>
+                    <td>Block 42 • Room 204</td>
+                    <td>Bed 02</td>
+                    <td><span class="status-badge status-assigned">Occupied</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>DDU/0882/14</strong><br><span style="color: var(--text-muted); font-size: 0.75rem;">Natnael Haile</span></td>
+                    <td>Block 18 • Room 108</td>
+                    <td>Bed 01</td>
+                    <td><span class="status-badge status-assigned">Occupied</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div style="margin-top: 1.5rem; background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.85rem; color: var(--accent-primary); margin: 0 0 0.4rem; text-transform: uppercase;">
+                <i class="fas fa-database"></i> Underlying MySQL Schema Model
+              </h4>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin: 0; font-family: 'JetBrains Mono', monospace;">
+                Tables: <code>student (id, name, dept, sex)</code> • <code>rooms (room_no, block, capacity)</code> • <code>assign (id, student_id, room_no, bed_no, date)</code> • <code>proctor (proctor_id, block_no)</code>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inter-Project Suite Navigation -->
+    <nav class="suite-footer-nav">
+      <a href="../index.html" class="suite-nav-card">
+        <span class="nav-direction"><i class="fas fa-arrow-left"></i> Previous</span>
+        <span class="nav-proj-title">Amanuel's Portfolio</span>
+        <span class="nav-proj-stack">Back to main profile & CV</span>
+      </a>
+
+      <a href="online-exam.html" class="suite-nav-card" style="text-align: right;">
+        <span class="nav-direction">Next Project <i class="fas fa-arrow-right"></i></span>
+        <span class="nav-proj-title">Online Exam Platform</span>
+        <span class="nav-proj-stack">React • Node.js • MongoDB</span>
+      </a>
+    </nav>
+  </main>
+
+  <script>
+    document.getElementById("assignForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const id = document.getElementById("studentId").value;
+      const name = document.getElementById("studentName").value;
+      const block = document.getElementById("dormBlock").value.split(" ")[0] + " " + document.getElementById("dormBlock").value.split(" ")[1];
+      const room = document.getElementById("roomNo").value;
+      const bed = document.getElementById("bedSlot").value.split(" ")[0] + " " + document.getElementById("bedSlot").value.split(" ")[1];
+
+      const tbody = document.getElementById("allocationTable");
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td><strong>${id}</strong><br><span style="color: var(--text-muted); font-size: 0.75rem;">${name}</span></td>
+        <td>${block} • ${room}</td>
+        <td>${bed}</td>
+        <td><span class="status-badge status-assigned">Occupied</span></td>
+      `;
+      tbody.prepend(row);
+
+      // Increment stats
+      const allocatedEl = document.getElementById("statAllocatedBeds");
+      let count = parseInt(allocatedEl.textContent.replace(",", "")) + 1;
+      allocatedEl.textContent = count.toLocaleString();
+
+      alert(`Success! Student ${name} (${id}) assigned to ${block}, ${room}, ${bed}.`);
+    });
+  </script>
+</body>
+</html>

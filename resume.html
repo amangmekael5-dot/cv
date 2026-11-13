@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amanuel Kassie - Curriculum Vitae (CV) | IT Student, Dire Dawa University</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    /* -------------------------------------------------------------
+       ATS-FRIENDLY PRINTABLE CURRICULUM VITAE (CV)
+       Standardized layout for Applicant Tracking Systems & recruiters
+       ------------------------------------------------------------- */
+    :root {
+      --cv-text: #1a202c;
+      --cv-headings: #0f172a;
+      --cv-muted: #4a5568;
+      --cv-accent: #2563eb;
+      --cv-border: #cbd5e1;
+      --cv-bg: #ffffff;
+      --cv-bar-bg: #f1f5f9;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--cv-text);
+      background-color: #f8fafc;
+      line-height: 1.5;
+      font-size: 13.5px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* Screen Action Bar (hidden on print) */
+    .screen-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .toolbar-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    .btn-action {
+      background: var(--cv-accent);
+      color: #ffffff;
+      border: none;
+      padding: 0.5rem 1.1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn-action:hover {
+      background: #1d4ed8;
+    }
+
+    .btn-secondary {
+      background: #334155;
+    }
+
+    .btn-secondary:hover {
+      background: #475569;
+    }
+
+    /* CV Page Wrapper */
+    .cv-wrapper {
+      max-width: 850px;
+      margin: 2rem auto;
+      background: var(--cv-bg);
+      padding: 3rem 3.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+    }
+
+    /* Header */
+    .cv-header {
+      border-bottom: 2px solid var(--cv-headings);
+      padding-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .header-content-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 1.75rem;
+    }
+
+    .cv-photo-container {
+      flex-shrink: 0;
+    }
+
+    .cv-profile-photo {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center 20%;
+      border: 3px solid var(--cv-accent);
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.2);
+      display: block;
+    }
+
+    .cv-header-details {
+      flex: 1;
+      text-align: left;
+    }
+
+    .candidate-name {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: var(--cv-headings);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.2rem;
+    }
+
+    .candidate-title {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--cv-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-line {
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+      color: var(--cv-muted);
+    }
+
+    .contact-line span,
+    .contact-line a {
+      color: var(--cv-muted);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .contact-line a:hover {
+      color: var(--cv-accent);
+      text-decoration: underline;
+    }
+
+    /* Section Styling */
+    .cv-section {
+      margin-bottom: 1.4rem;
+      page-break-inside: avoid;
+    }
+
+    .section-heading {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cv-headings);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1.5px solid var(--cv-border);
+      padding-bottom: 0.25rem;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .section-heading i {
+      color: var(--cv-accent);
+      font-size: 0.95rem;
+    }
+
+    /* Items */
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.2rem;
+    }
+
+    .item-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--cv-headings);
+    }
+
+    .item-subtitle {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--cv-accent);
+    }
+
+    .item-date, .item-location {
+      font-size: 0.85rem;
+      color: var(--cv-muted);
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .cv-entry {
+      margin-bottom: 1rem;
+      page-break-inside: avoid;
+    }
+
+    .cv-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .bullet-list {
+      list-style-type: disc;
+      padding-left: 1.25rem;
+      margin-top: 0.35rem;
+    }
+
+    .bullet-list li {
+      margin-bottom: 0.3rem;
+      color: var(--cv-text);
+      line-height: 1.45;
+    }
+
+    /* Skills Grid */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .skills-table tr {
+      border-bottom: 1px solid #f1f5f9;
+    }
+
+    .skills-table tr:last-child {
+      border-bottom: none;
+    }
+
+    .skills-table td {
+      padding: 0.35rem 0;
+      vertical-align: top;
+    }
+
+    .skill-cat {
+      width: 25%;
+      font-weight: 700;
+      color: var(--cv-headings);
+    }
+
+    .skill-val {
+      width: 75%;
+      color: var(--cv-muted);
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background-color: #ffffff !important;
+        font-size: 11pt !important;
+      }
+
+      .screen-toolbar {
+        display: none !important;
+      }
+
+      .cv-wrapper {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+      }
+
+      @page {
+        margin: 12mm 15mm;
+        size: A4 portrait;
+      }
+
+      .cv-section {
+        page-break-inside: avoid;
+      }
+
+      .cv-profile-photo {
+        width: 95px !important;
+        height: 95px !important;
+        border: 2px solid #2563eb !important;
+      }
+
+      a {
+        color: var(--cv-headings) !important;
+        text-decoration: none !important;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-content-wrapper {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      .cv-header-details {
+        text-align: center;
+      }
+      .cv-header-details .contact-line {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Screen Toolbar for Printing & Navigation -->
+  <div class="screen-toolbar">
+    <div class="toolbar-title">
+      <i class="fas fa-file-pdf"></i>
+      <span>ATS Curriculum Vitae (CV) - Dire Dawa University</span>
+    </div>
+    <div class="toolbar-actions">
+      <a href="index.html" class="btn-action btn-secondary">
+        <i class="fas fa-arrow-left"></i> Back to Portfolio
+      </a>
+      <button onclick="window.print()" class="btn-action">
+        <i class="fas fa-print"></i> Print / Save as PDF
+      </button>
+    </div>
+  </div>
+
+  <div class="cv-wrapper">
+    <!-- Header -->
+    <header class="cv-header">
+      <div class="header-content-wrapper">
+        <div class="cv-photo-container">
+          <img src="assets/profile.jpg" alt="Amanuel Kassie" class="cv-profile-photo" />
+        </div>
+        <div class="cv-header-details">
+          <h1 class="candidate-name" id="cvFullName">Amanuel Kassie</h1>
+          <p class="candidate-title">B.Sc. Information Technology Student | Full-Stack Web & Software Developer</p>
+          
+          <div class="contact-line">
+            <span><i class="fas fa-map-marker-alt"></i> Dire Dawa, Ethiopia</span>
+            <span>•</span>
+            <a href="mailto:amangmekael5@gmail.com"><i class="fas fa-envelope"></i> amangmekael5@gmail.com</a>
+            <span>•</span>
+            <a href="https://t.me/aman16you" target="_blank"><i class="fab fa-telegram"></i> @aman16you</a>
+          </div>
+
+          <div class="contact-line" style="margin-top: 0.35rem;">
+            <a href="https://linkedin.com/in/amanuelkassie" target="_blank"><i class="fab fa-linkedin"></i> linkedin.com/in/amanuelkassie</a>
+            <span>•</span>
+            <a href="https://github.com/amangmekael5" target="_blank"><i class="fab fa-github"></i> github.com/amangmekael5</a>
+            <span>•</span>
+            <a href="index.html"><i class="fas fa-globe"></i> Interactive Portfolio</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section class="cv-section">
+      <h2 class="section-heading"><i class="fas fa-user-check"></i> Professional Summary</h2>
+      <p style="color: var(--cv-text); line-height: 1.5;">
+        Motivated <strong>Information Technology</strong> undergraduate at <strong>Dire Dawa University (DDU)</strong> with proven competence in full-stack web development, relational database modeling, and RESTful API engineering. Experienced in architecting scalable solutions with JavaScript (ES6+, React, Node.js), Python, PostgreSQL, and MySQL. Combines rigorous academic coursework in data structures, algorithms, and networking with a strong passion for solving real-world challenges. Actively seeking software engineering or IT internship positions.
+      </p>
+    </section>
+
+    <!-- Education -->
+    <section class="cv-section">
+      <h2 class="section-heading"><i class="fas fa-graduation-cap"></i> Education</h2>
+      <div class="cv-entry">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Dire Dawa University (DDU), Institute of Technology</span>
+            <div class="item-subtitle">Bachelor of Science in Information Technology (B.Sc. IT)</div>
+          </div>
+          <div style="text-align: right;">
+            <div class="item-location">Dire Dawa, Ethiopia</div>
+            <div class="item-date">2022 – Expected July 2026</div>
+          </div>
+        </div>
+        <p style="margin-top: 0.25rem;"><strong>Academic Standing:</strong> Cumulative GPA: <strong>3.7 / 4.0</strong> (Dean's Honor List)</p>
+        <p style="margin-top: 0.2rem; color: var(--cv-muted); font-size: 0.85rem;">
+          <strong>Relevant Coursework:</strong> Web Programming, Relational Database Management Systems (SQL), Data Structures & Algorithms, Object-Oriented Software Engineering, Computer Networks & TCP/IP, Operating Systems (Linux).
+        </p>
+      </div>
+    </section>
+
+    <!-- Technical Skills -->
+    <section class="cv-section">
+      <h2 class="section-heading"><i class="fas fa-cogs"></i> Technical Skills</h2>
+      <table class="skills-table">
+        <tr>
+          <td class="skill-cat">Programming Languages:</td>
+          <td class="skill-val">JavaScript (ES6+), Python, Java, C++, SQL, HTML5, CSS3</td>
+        </tr>
+        <tr>
+          <td class="skill-cat">Web & Frameworks:</td>
+          <td class="skill-val">React.js, Node.js, Express.js, Django, FastAPI, Tailwind CSS, Bootstrap</td>
+        </tr>
+        <tr>
+          <td class="skill-cat">Databases & Storage:</td>
+          <td class="skill-val">PostgreSQL, MySQL, MongoDB, Firebase, Relational Schema Normalization</td>
+        </tr>
+        <tr>
+          <td class="skill-cat">Tools & Environments:</td>
+          <td class="skill-val">Git, GitHub, Postman, Linux (Ubuntu/Debian), Bash, Docker Basics, VS Code</td>
+        </tr>
+        <tr>
+          <td class="skill-cat">Core Competencies:</td>
+          <td class="skill-val">RESTful API Design, JWT Authentication, OOP, Agile/Scrum, Problem Solving</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Featured Technical Projects -->
+    <section class="cv-section">
+      <h2 class="section-heading"><i class="fas fa-laptop-code"></i> Technical Projects</h2>
+
+      <!-- Project 1: Dormitory Management System -->
+      <div class="cv-entry">
+        <div class="item-header">
+          <div>
+            <span class="item-title">DDU Student Dormitory Management System</span>
+            <span style="color: var(--cv-muted); font-size: 0.85rem;"> | <em>PHP, MySQL, JavaScript, Apache/XAMPP</em></span>
+            <span style="font-size: 0.82rem; margin-left: 0.5rem;">
+              <a href="projects/dormitory-management.html" target="_blank" style="color: var(--cv-accent); font-weight: 600;">[View Real Project]</a>
+              • <a href="https://github.com/amangmekael5/DormitoryManagementSystem_PHP" target="_blank" style="color: var(--cv-muted);">[GitHub]</a>
+            </span>
+          </div>
+          <div class="item-date">2024</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Architected an automated student accommodation platform for Dire Dawa University managing room and bed allocations, block proctors, and maintenance complaints.</li>
+          <li>Engineered automated room allocation logic based on student department, gender, and academic year, eliminating manual paper-based backlogs.</li>
+          <li>Built role-based authentication and operational dashboards for Students, Block Proctors, and Dormitory Management, reducing registration wait times by 65%.</li>
+        </ul>
+      </div>
+
+      <!-- Project 2: Online Exam Platform -->
+      <div class="cv-entry">
+        <div class="item-header">
+          <div>
+            <span class="item-title">University Online Examination & Assessment Platform</span>
+            <span style="color: var(--cv-muted); font-size: 0.85rem;"> | <em>React.js, Node.js, Express.js, MongoDB, Vite</em></span>
+            <span style="font-size: 0.82rem; margin-left: 0.5rem;">
+              <a href="projects/online-exam.html" target="_blank" style="color: var(--cv-accent); font-weight: 600;">[View Real Project]</a>
+              • <a href="https://github.com/amangmekael5/online-exam-platform" target="_blank" style="color: var(--cv-muted);">[GitHub]</a>
+            </span>
+          </div>
+          <div class="item-date">2024</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Developed a secure academic evaluation portal featuring timed quizzes, automated instant grading, and instructor question bank builders.</li>
+          <li>Engineered a resilient countdown timer with client-side state recovery protecting students against unintended disconnections.</li>
+          <li>Implemented anti-cheating mechanisms including full-screen lockdown enforcement, tab-switching tracking, and randomized question ordering.</li>
+        </ul>
+      </div>
+
+      <!-- Project 3: Online Electronics Selling -->
+      <div class="cv-entry">
+        <div class="item-header">
+          <div>
+            <span class="item-title">ElectroStore - Online Electronics Selling Platform</span>
+            <span style="color: var(--cv-muted); font-size: 0.85rem;"> | <em>React.js, Node.js, Express.js, MongoDB, REST APIs</em></span>
+            <span style="font-size: 0.82rem; margin-left: 0.5rem;">
+              <a href="projects/electronics-store.html" target="_blank" style="color: var(--cv-accent); font-weight: 600;">[View Real Project]</a>
+              • <a href="https://github.com/amangmekael5/online-electronics-store" target="_blank" style="color: var(--cv-muted);">[GitHub]</a>
+            </span>
+          </div>
+          <div class="item-date">2023 – 2024</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Constructed an e-commerce platform for computer accessories and consumer electronics with real-time category filtering, search, and customer reviews.</li>
+          <li>Designed a transactional schema enforcing atomic updates for shopping cart checkout, stock deduction, and order processing.</li>
+          <li>Integrated localized payment verification workflows (Telebirr & CBE Birr confirmation) and administrative inventory analytics.</li>
+        </ul>
+      </div>
+
+      <!-- Project 4: Cafe Check-In -->
+      <div class="cv-entry">
+        <div class="item-header">
+          <div>
+            <span class="item-title">Campus Café Check-In & Student Meal Verification System</span>
+            <span style="color: var(--cv-muted); font-size: 0.85rem;"> | <em>Node.js, Express.js, MongoDB, Barcode & RFID API</em></span>
+            <span style="font-size: 0.82rem; margin-left: 0.5rem;">
+              <a href="projects/cafe-checkin.html" target="_blank" style="color: var(--cv-accent); font-weight: 600;">[View Real Project]</a>
+              • <a href="https://github.com/amangmekael5/cafe-checkin-system" target="_blank" style="color: var(--cv-muted);">[GitHub]</a>
+            </span>
+          </div>
+          <div class="item-date">2023</div>
+        </div>
+        <ul class="bullet-list">
+          <li>Engineered a rapid meal attendance verification system for campus dining halls, verifying student IDs in under 2 seconds per scan.</li>
+          <li>Enforced meal schedule access rules (Breakfast, Lunch, Dinner) preventing duplicate meal entries and meal-card fraud.</li>
+          <li>Delivered a real-time monitoring dashboard displaying live dining hall headcounts, peak volume periods, and daily consumption analytics.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Certifications & Awards -->
+    <section class="cv-section">
+      <h2 class="section-heading"><i class="fas fa-certificate"></i> Certifications & Honors</h2>
+      <ul class="bullet-list">
+        <li><strong>Full-Stack Web Development Specialization</strong> — Coursera / freeCodeCamp (2024)</li>
+        <li><strong>Database Design & SQL Foundations Certification</strong> — Oracle Academy (2023)</li>
+        <li><strong>Cisco Networking Academy (CCNA) Introduction to Networks</strong> — Cisco (2023)</li>
+        <li><strong>Dean’s Academic Honor List</strong> — Dire Dawa University, Institute of Technology (2023, 2024)</li>
+      </ul>
+    </section>
+
+    <!-- Languages -->
+    <section class="cv-section">
+      <h2 class="section-heading"><i class="fas fa-language"></i> Languages</h2>
+      <p style="color: var(--cv-text);">
+        <strong>English:</strong> Professional Working Proficiency &nbsp;•&nbsp; 
+        <strong>Amharic:</strong> Native / Bilingual Proficiency
+      </p>
+    </section>
+  </div>
+
+  <!-- Sync personal details from config.js if customized -->
+  <script src="js/config.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof PORTFOLIO_DATA !== "undefined" && PORTFOLIO_DATA.personal) {
+        const p = PORTFOLIO_DATA.personal;
+        if (p.fullName) {
+          document.getElementById("cvFullName").textContent = p.fullName;
+          document.title = `${p.fullName} - Curriculum Vitae (CV) | IT Student, Dire Dawa University`;
+        }
+      }
+    });
+  </script>
+</body>
+</html>

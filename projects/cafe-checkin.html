@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Café Check-In & Student Meal Verification | Real Project by Amanuel Kassie</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Shared Showcase CSS -->
+  <link rel="stylesheet" href="../css/project-showcase.css" />
+
+  <style>
+    .cafe-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2rem;
+    }
+
+    .terminal-box {
+      background: rgba(0, 0, 0, 0.28);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 1.8rem;
+    }
+
+    .meal-schedule-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .meal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.8rem;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .meal-card.active-meal {
+      background: rgba(16, 185, 129, 0.15);
+      border-color: #10b981;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.25);
+    }
+
+    .meal-card h4 {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .meal-card span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .scanner-input-group {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .scan-status-panel {
+      padding: 1.25rem;
+      border-radius: var(--radius-md);
+      text-align: center;
+      margin-top: 1.2rem;
+      font-weight: 700;
+      display: none;
+    }
+
+    .status-granted {
+      background: rgba(16, 185, 129, 0.15);
+      border: 2px solid #10b981;
+      color: #10b981;
+      display: block;
+    }
+
+    .status-denied {
+      background: rgba(239, 68, 68, 0.15);
+      border: 2px solid #ef4444;
+      color: #ef4444;
+      display: block;
+    }
+
+    .quick-ids {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.6rem;
+    }
+
+    .id-pill {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+      padding: 0.25rem 0.6rem;
+      border-radius: var(--radius-full);
+      font-size: 0.78rem;
+      font-family: 'JetBrains Mono', monospace;
+      cursor: pointer;
+    }
+
+    .id-pill:hover {
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+    }
+
+    .log-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .log-table th, .log-table td {
+      padding: 0.7rem 0.9rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .log-table th {
+      background: var(--bg-surface);
+      color: var(--text-secondary);
+    }
+
+    @media (max-width: 900px) {
+      .cafe-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Integrated Suite Bar -->
+  <header class="suite-navbar">
+    <a href="../index.html" class="suite-brand">
+      <i class="fas fa-terminal"></i>
+      <span>Amanuel</span>.Projects
+    </a>
+
+    <nav class="suite-project-links">
+      <a href="dormitory-management.html" class="project-pill">
+        <i class="fas fa-building"></i> 1. Dormitory System
+      </a>
+      <a href="online-exam.html" class="project-pill">
+        <i class="fas fa-file-alt"></i> 2. Online Exam
+      </a>
+      <a href="electronics-store.html" class="project-pill">
+        <i class="fas fa-laptop"></i> 3. Electronics Store
+      </a>
+      <a href="cafe-checkin.html" class="project-pill active">
+        <i class="fas fa-utensils"></i> 4. Café Check-In
+      </a>
+    </nav>
+
+    <a href="../index.html" class="btn-back-portfolio">
+      <i class="fas fa-arrow-left"></i> Portfolio
+    </a>
+  </header>
+
+  <main class="showcase-container">
+    <!-- Project Banner -->
+    <section class="project-banner">
+      <div class="project-meta-bar">
+        <span class="badge-tag">Real-Time Campus Dining System</span>
+        <span class="badge-tag badge-status"><i class="fas fa-check-circle"></i> Real Working Project</span>
+        <span class="badge-tag">Node.js • Express • MongoDB • Barcode & NFC</span>
+      </div>
+
+      <h1>Campus Café Check-In & Student Meal Verification System</h1>
+      <p>
+        A high-speed meal verification system engineered for Dire Dawa University campus dining halls. Validates student meal allowance in under 2 seconds per scan, eliminates duplicate food claims within active meal windows (Breakfast, Lunch, Dinner), and provides live headcounts to cafeteria management.
+      </p>
+
+      <div class="project-action-row">
+        <a href="https://github.com/amangmekael5/cafe-checkin-system" target="_blank" rel="noopener noreferrer" class="btn-primary-action">
+          <i class="fab fa-github"></i> View GitHub Repository
+        </a>
+        <a href="#live-system" class="btn-outline-action">
+          <i class="fas fa-barcode"></i> Jump to Scanner Console
+        </a>
+      </div>
+    </section>
+
+    <!-- Live Interactive Workbench -->
+    <section id="live-system" class="workbench-card">
+      <div class="workbench-topbar">
+        <div class="workbench-title">
+          <i class="fas fa-qrcode"></i>
+          <span>Live Cafeteria Turnstile Terminal (DDU Main Dining Hall)</span>
+        </div>
+        <div style="font-size: 0.82rem; color: #10b981; font-weight: 600;">
+          <i class="fas fa-clock"></i> Scanner Speed: &lt; 2.0s Latency
+        </div>
+      </div>
+
+      <div class="workbench-body">
+        <!-- Meal Schedule Strip -->
+        <div class="meal-schedule-strip">
+          <div class="meal-card" id="mealBreakfast">
+            <h4>Breakfast</h4>
+            <span>05:30 – 09:30</span>
+          </div>
+          <div class="meal-card active-meal" id="mealLunch">
+            <h4 style="color: #10b981;">● Lunch (Active)</h4>
+            <span>11:00 – 14:30</span>
+          </div>
+          <div class="meal-card" id="mealDinner">
+            <h4>Dinner</h4>
+            <span>17:00 – 20:30</span>
+          </div>
+        </div>
+
+        <div class="cafe-grid">
+          <!-- Scanner Console -->
+          <div class="terminal-box">
+            <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+              <i class="fas fa-barcode" style="color: var(--accent-primary);"></i>
+              Scan Student ID / Barcode
+            </h3>
+
+            <form id="scanForm">
+              <div class="scanner-input-group">
+                <input type="text" id="scanInput" class="form-control" placeholder="Scan or enter Student ID (e.g. ETS0429/14)" value="ETS0429/14" style="font-family: 'JetBrains Mono', monospace; font-size: 1rem; font-weight: 600;" required />
+                <button type="submit" class="btn-primary-action">
+                  <i class="fas fa-check"></i> Check In
+                </button>
+              </div>
+            </form>
+
+            <div style="font-size: 0.8rem; color: var(--text-secondary);">
+              <span>Click quick student ID sample:</span>
+              <div class="quick-ids">
+                <span class="id-pill" onclick="setScanId('ETS0429/14')">ETS0429/14 (Amanuel)</span>
+                <span class="id-pill" onclick="setScanId('ETS0112/14')">ETS0112/14 (Kalkidan)</span>
+                <span class="id-pill" onclick="setScanId('ETS0874/14')">ETS0874/14 (Natnael)</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Scan Status Notification -->
+            <div id="scanResultBox" class="scan-status-panel"></div>
+
+            <div style="margin-top: 1.5rem; background: var(--bg-surface); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--border-color);">
+              <h4 style="font-size: 0.82rem; color: var(--accent-primary); margin: 0 0 0.4rem; text-transform: uppercase;">
+                <i class="fas fa-code"></i> Actual Server Logic from server.js
+              </h4>
+              <p style="font-size: 0.78rem; color: var(--text-secondary); margin: 0; font-family: 'JetBrains Mono', monospace;">
+                <code>const MEALS = [{ name: "Breakfast", from: "05:30", to: "09:30" }, ...];</code><br>
+                <code>if (alreadyClaimed(id, currentMeal)) return res.status(409).json("ALREADY CLAIMED");</code>
+              </p>
+            </div>
+          </div>
+
+          <!-- Live Audit Log Table -->
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem;">
+              <h3 style="font-size: 1.1rem; margin: 0;">Live Meal Verification Stream</h3>
+              <span id="headcountBadge" class="badge-tag" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">Headcount: 142</span>
+            </div>
+
+            <div style="border: 1px solid var(--border-color); border-radius: var(--radius-md); overflow: hidden;">
+              <table class="log-table">
+                <thead>
+                  <tr>
+                    <th>Student ID</th>
+                    <th>Meal</th>
+                    <th>Time</th>
+                    <th>Verification</th>
+                  </tr>
+                </thead>
+                <tbody id="cafeLogTable">
+                  <tr>
+                    <td><strong>ETS0112/14</strong></td>
+                    <td>Lunch</td>
+                    <td>12:38:12</td>
+                    <td><span style="color: #10b981; font-weight: 700;">✓ Granted</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>ETS0874/14</strong></td>
+                    <td>Lunch</td>
+                    <td>12:35:45</td>
+                    <td><span style="color: #10b981; font-weight: 700;">✓ Granted</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Inter-Project Suite Navigation -->
+    <nav class="suite-footer-nav">
+      <a href="electronics-store.html" class="suite-nav-card">
+        <span class="nav-direction"><i class="fas fa-arrow-left"></i> Previous Project</span>
+        <span class="nav-proj-title">ElectroStore - Electronics Selling</span>
+        <span class="nav-proj-stack">React • Node.js • MongoDB • Cart</span>
+      </a>
+
+      <a href="dormitory-management.html" class="suite-nav-card" style="text-align: right;">
+        <span class="nav-direction">Cycle to First Project <i class="fas fa-arrow-right"></i></span>
+        <span class="nav-proj-title">DDU Dormitory Management System</span>
+        <span class="nav-proj-stack">PHP • MySQL • Room Allocations</span>
+      </a>
+    </nav>
+  </main>
+
+  <script>
+    const claimedSet = new Set(["ETS0112/14", "ETS0874/14"]);
+    let headcount = 142;
+
+    function setScanId(id) {
+      document.getElementById("scanInput").value = id;
+    }
+
+    document.getElementById("scanForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const input = document.getElementById("scanInput");
+      const id = input.value.trim().toUpperCase();
+      if (!id) return;
+
+      const resultBox = document.getElementById("scanResultBox");
+      const tbody = document.getElementById("cafeLogTable");
+      const now = new Date().toLocaleTimeString();
+
+      if (claimedSet.has(id)) {
+        // Duplicate check-in error
+        resultBox.className = "scan-status-panel status-denied";
+        resultBox.innerHTML = `
+          <i class="fas fa-times-circle" style="font-size: 1.8rem; margin-bottom: 0.4rem; display: block;"></i>
+          DUPLICATE CHECK-IN REJECTED!<br>
+          <span style="font-size: 0.85rem; font-weight: 500;">Student ${id} has ALREADY claimed Lunch today!</span>
+        `;
+      } else {
+        // Granted
+        claimedSet.add(id);
+        headcount++;
+        document.getElementById("headcountBadge").textContent = "Headcount: " + headcount;
+
+        resultBox.className = "scan-status-panel status-granted";
+        resultBox.innerHTML = `
+          <i class="fas fa-check-circle" style="font-size: 1.8rem; margin-bottom: 0.4rem; display: block;"></i>
+          MEAL CHECK-IN GRANTED!<br>
+          <span style="font-size: 0.85rem; font-weight: 500;">Student ID: ${id} • Session: Lunch • Enjoy your meal!</span>
+        `;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td><strong>${id}</strong></td>
+          <td>Lunch</td>
+          <td>${now}</td>
+          <td><span style="color: #10b981; font-weight: 700;">✓ Granted</span></td>
+        `;
+        tbody.prepend(row);
+      }
+    });
+  </script>
+</body>
+</html>
